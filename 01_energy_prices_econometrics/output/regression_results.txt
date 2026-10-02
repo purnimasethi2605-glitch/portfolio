@@ -1,0 +1,143 @@
+=====================================================
+A. Unit root tests (Augmented Dickey Fuller)
+   Null hypothesis: the series has a unit root (it wanders)
+=====================================================
+log WTI, level               statistic =  -2.395   p value = 0.410
+log gas, level               statistic =  -3.347   p value = 0.063
+WTI, monthly change          statistic =  -7.107   p value = 0.010
+gas, monthly change          statistic =  -7.273   p value = 0.010
+Note: adf.test reports p values only between 0.01 and 0.10.
+
+=====================================================
+B. Model 1: OLS in levels   log(gas) = a + b log(WTI) + e
+=====================================================
+
+Call:
+lm(formula = log_gas ~ log_wti, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.0325 -0.2891 -0.1097  0.3428  1.2452 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.11584    0.16279   0.712    0.477    
+log_wti      0.29911    0.04077   7.337  1.5e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4252 on 354 degrees of freedom
+Multiple R-squared:  0.132,	Adjusted R-squared:  0.1295 
+F-statistic: 53.83 on 1 and 354 DF,  p-value: 1.504e-12
+
+Durbin Watson test on Model 1 residuals
+
+	Durbin-Watson test
+
+data:  m1
+DW = 0.13811, p-value < 2.2e-16
+alternative hypothesis: true autocorrelation is greater than 0
+
+Phillips Ouliaris cointegration test
+Null hypothesis: the two series are NOT cointegrated
+
+	Phillips-Ouliaris Cointegration Test
+
+data:  cbind(df$log_gas, df$log_wti)
+Phillips-Ouliaris demeaned = -23.337, Truncation lag parameter = 3,
+p-value = 0.02856
+
+=====================================================
+C. Model 2: OLS in monthly changes
+   gas change = a + b WTI change + e
+=====================================================
+
+Call:
+lm(formula = ret_gas ~ ret_wti, data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-77.113  -8.060  -0.476   8.027  65.474 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -0.13231    0.83892  -0.158   0.8748  
+ret_wti      0.21050    0.08359   2.518   0.0122 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 15.8 on 353 degrees of freedom
+Multiple R-squared:  0.01765,	Adjusted R-squared:  0.01486 
+F-statistic: 6.341 on 1 and 353 DF,  p-value: 0.01224
+
+Breusch Godfrey test for serial correlation (12 lags)
+
+	Breusch-Godfrey test for serial correlation of order up to 12
+
+data:  m2
+LM test = 15.106, df = 12, p-value = 0.2357
+
+Breusch Pagan test for heteroskedasticity
+
+	studentized Breusch-Pagan test
+
+data:  m2
+BP = 0.92404, df = 1, p-value = 0.3364
+
+Model 2 with Newey West standard errors
+
+t test of coefficients:
+
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -0.132307   0.774091 -0.1709  0.86439  
+ret_wti      0.210496   0.085718  2.4557  0.01454 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+=====================================================
+D. Model 3: did the link change after 2008?
+   gas change = a + b WTI change + c post2009
+                + d (WTI change x post2009) + e
+=====================================================
+
+Call:
+lm(formula = ret_gas ~ ret_wti * post2009, data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-75.827  -7.779   0.017   7.653  67.566 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        0.1889     1.3135   0.144  0.88570    
+ret_wti            0.5132     0.1456   3.524  0.00048 ***
+post2009          -0.5592     1.6996  -0.329  0.74235    
+ret_wti:post2009  -0.4487     0.1773  -2.531  0.01181 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 15.7 on 351 degrees of freedom
+Multiple R-squared:  0.03573,	Adjusted R-squared:  0.02749 
+F-statistic: 4.335 on 3 and 351 DF,  p-value: 0.005116
+
+Model 3 with Newey West standard errors
+
+t test of coefficients:
+
+                 Estimate Std. Error t value  Pr(>|t|)    
+(Intercept)       0.18895    1.09588  0.1724 0.8632111    
+ret_wti           0.51324    0.14529  3.5325 0.0004666 ***
+post2009         -0.55916    1.52942 -0.3656 0.7148816    
+ret_wti:post2009 -0.44872    0.16675 -2.6910 0.0074657 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+=====================================================
+E. Model 4: Model 3 plus month of year dummies (seasonality check)
+=====================================================
+                   Estimate Std. Error    t value     Pr(>|t|)
+ret_wti           0.5939284  0.1335932  4.4457965 1.187138e-05
+post2009         -0.4912811  1.4118256 -0.3479757 7.280737e-01
+ret_wti:post2009 -0.5062948  0.1593713 -3.1768256 1.625396e-03
+
+R squared, Model 4: 0.0974

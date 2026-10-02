@@ -1,0 +1,31 @@
+Study period: 2015-01-01 to 2026-05-23 (4161 days)
+Moving average window: 200 days. Assumed cost per trade: 1%
+
+Growth of 1 dollar, buy and hold against the trend rule
+                              Buy and hold    Trend rule
+Final value of 1 dollar              243.4         119.0
+Average growth per year              62.0%         52.1%
+Worst fall from a peak              -83.8%        -69.6%
+Share of days invested                100%           61%
+Number of trades                         1            70
+
+Price change over the next 90 days, by trend on the starting day
+Up trend days      days =  2520   median =   16.1%   share that rose = 66%
+Down trend days    days =  1551   median =    1.0%   share that rose = 51%
+
+Same test with other moving average windows
+  Window   Final value   Growth per year   Worst fall   Trades
+      50          77.4             46.5%       -69.8%      204
+     100          86.6             47.9%       -68.5%      143
+     150         249.4             62.3%       -65.7%       80
+     200         119.0             52.1%       -69.6%       70
+     250         109.6             51.0%       -71.7%       78
+    Hold         243.4             62.0%       -83.8%        1
+
+Investing 1,200 dollars: all at once, or 100 dollars a month for 12 months
+Start months tested: 125
+All at once ended higher in 91 of 125 start months (73%)
+Median value after 12 months, all at once: 2,086 dollars
+Median value after 12 months, monthly:     1,749 dollars
+Worst result, all at once: 339 dollars
+Worst result, monthly:     543 dollars

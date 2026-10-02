@@ -1,0 +1,38 @@
+Rolling one month ahead forecasts, last 60 months
+Errors are in US dollars per barrel
+
+        model  rmse   mae  mape
+1 random_walk 7.099 5.422 6.588
+2       arima 6.914 5.249 6.415
+3         ets 7.100 5.423 6.588
+
+Diebold Mariano test: ARIMA against random walk
+Null hypothesis: the two models are equally accurate
+
+	Diebold-Mariano Test
+
+data:  err[, "arima"]err[, "random_walk"]
+DM = -0.78582, Forecast horizon = 1, Loss function power = 2, p-value =
+0.4351
+alternative hypothesis: two.sided
+
+
+ARIMA model chosen on the training sample for Part B
+Series: train 
+ARIMA(2,1,1) with drift 
+
+Coefficients:
+         ar1      ar2      ma1   drift
+      1.1895  -0.2825  -0.9436  0.0040
+s.e.  0.0676   0.0531   0.0477  0.0033
+
+sigma^2 = 0.009419:  log likelihood = 304.28
+AIC=-598.56   AICc=-598.37   BIC=-579.55
+
+Ljung Box test on the ARIMA residuals (12 lags)
+
+	Box-Ljung test
+
+data:  residuals(fit)
+X-squared = 4.2147, df = 8, p-value = 0.8372
+

@@ -1,0 +1,7 @@
+Sample resume text (made up example, not a real person)
+
+Economics graduate with training in econometrics and applied research.
+Built dashboards in Excel and Power BI to track fleet utilization.
+Wrote research briefs for investment decisions.
+Ran regression analysis in R for a course project.
+Researched transit accessibility with community partners.

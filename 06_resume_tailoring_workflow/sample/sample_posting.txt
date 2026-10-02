@@ -1,0 +1,17 @@
+Policy Analyst, Northfield Regional Council (made up example posting)
+
+The Policy Analyst conducts quantitative and qualitative research to support
+policy development. You will collect and analyze economic data, prepare
+briefing notes for senior leaders, and present findings to stakeholders.
+
+Responsibilities
+Conduct research and data analysis on regional economic trends.
+Prepare briefing notes, reports and presentations for decision makers.
+Build dashboards in Excel and Power BI to track program performance.
+Engage stakeholders and community partners on policy options.
+Support program evaluation using regression analysis in R or Stata.
+
+Qualifications
+Degree in economics, public policy or a related field.
+Knowledge of regression analysis and statistical software such as R or Stata.
+Clear written communication, including briefing notes for senior leaders.

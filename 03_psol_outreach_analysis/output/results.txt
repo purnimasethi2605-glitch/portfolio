@@ -1,0 +1,11 @@
+London region replies: 63 
+Yes rate: 36.5 percent
+95 percent confidence interval: 24.7 to 49.6 percent
+
+Is the London yes rate different from the other regions?
+The other regions rate is an estimate, so three values are tried.
+
+Assumed rate elsewhere       p value (exact binomial test)
+20 percent                   0.002
+25 percent                   0.041
+30 percent                   0.272
